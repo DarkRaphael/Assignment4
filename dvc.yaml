@@ -1,0 +1,23 @@
+stages:
+  acquire_data:
+    cmd: python project/code/Download.py
+    deps:
+    - project/code/Download.py
+    outs:
+    - project/data/weather.zip
+  process:
+    cmd: python project/code/MonthlyVals.py
+    deps:
+    - project/code/MonthlyVals.py
+    outs:
+    - project/ouotput/monthlyValues.csv
+  prepare:
+    cmd: python project/code/MonthlyComp.py
+    deps:
+    - project/code/MonthlyComp.py
+    outs:
+    - project/ouotput/monthlyComputed.csv
+  evaluate:
+    cmd: python project/code/Evaluate.py
+    deps:
+    - project/code/Score.py
